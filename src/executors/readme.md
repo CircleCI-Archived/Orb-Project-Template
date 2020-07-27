@@ -1,6 +1,6 @@
 # Executors
 
-Easily add and author [Parameterized Executors](https://circleci.com/docs/2.0/reusing-config/#executors) to the `src/executors` directory.
+Easily author and add [Parameterized Executors](https://circleci.com/docs/2.0/reusing-config/#executors) to the `src/executors` directory.
 
 Each _YAML_ file within this directory will be treated as an orb executor, with a name which matches its filename.
 
