@@ -30,7 +30,7 @@ jobs:
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
   # This workflow will run on every commit
-  lint_pack-validate_publish-dev:
+  test-pack:
     unless: << pipeline.parameters.run-integration-tests >>
     jobs:
       - orb-tools/lint # Lint Yaml files
@@ -60,11 +60,11 @@ workflows:
           requires:
             - orb-tools/publish-dev
 
-  # This `integration-tests_prod-release` workflow will only run
+  # This `integration-test_deploy` workflow will only run
   # when the run-integration-tests pipeline parameter is set to true.
   # It is meant to be triggered by the "trigger-integration-tests-workflow"
   # job, and run tests on <your orb>@dev:${CIRCLE_SHA1:0:7}.
-  integration-tests_prod-release:
+  integration-test_deploy:
     when: << pipeline.parameters.run-integration-tests >>
     jobs:
       # Run any integration tests defined within the `jobs` key.
