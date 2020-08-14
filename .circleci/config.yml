@@ -39,6 +39,9 @@ workflows:
     jobs:
       - orb-tools/lint # Lint Yaml files
       - orb-tools/pack # Pack orb source
+      - shellcheck/check:
+          dir: ./src/scripts
+          exclude: SC2148
       # optional: Run BATS tests against your scripts
       - bats/run:
           path: ./src/tests
