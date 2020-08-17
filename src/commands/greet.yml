@@ -10,7 +10,6 @@ parameters:
 steps:
   - run:
       environment:
-        PARAM_TO: <<parameters.to>
+        PARAM_TO: <<parameters.to>>
       name: Hello Greeting
       command: <<include(scripts/greet.sh)>>
-
