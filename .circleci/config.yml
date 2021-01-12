@@ -96,6 +96,6 @@ workflows:
             - integration-test-1
           filters:
             branches:
-              only: 
+              only:
                 - master
                 - main
