@@ -48,21 +48,15 @@ workflows:
       # optional: Run BATS tests against your scripts
       - bats/run:
           path: ./src/tests
-      # If you accept building open source forks, protect your secrects behind a restricted context.
-      # A job containing restricted context (which holds your orb publishing credentials) may only be accessed by a user with proper permissions.
-      # An open source user may begin a pipeline with a PR, and once the pipeline is approved by an authorized user at this point, the pipeline will continue with the proper context permissions.
-      - hold-for-dev-publish:
-          type: approval
+      # Publish development version(s) of the orb.
+      - orb-tools/publish-dev:
+          orb-name: <namespace>/<orb-name>
+          context: <publishing-context> # A restricted context containing your private publishing credentials. Will only execute if approved by an authorized user.
           requires:
             - orb-tools/lint
             - orb-tools/pack
             - bats/run
             - shellcheck/check
-      # Publish development version(s) of the orb.
-      - orb-tools/publish-dev:
-          orb-name: <namespace>/<orb-name>
-          context: <publishing-context> # A restricted context containing your private publishing credentials. Will only execute if approved by an authorized user.
-          requires: [hold-for-dev-publish]
       # Trigger an integration workflow to test the
       # dev:${CIRCLE_SHA1:0:7} version of your orb
       - orb-tools/trigger-integration-tests-workflow:
