@@ -22,7 +22,7 @@ We welcome [issues](https://github.com/<organization>/<project-name>/issues) to 
 ### How to Publish
 * Create and push a branch with your new features.
 * When ready to publish a new production version, create a Pull Request from _feature branch_ to `master`.
-* The title of the pull request must contain a special semver tag: `[semver:<segement>]` where `<segment>` is replaced by one of the following values.
+* The title of the pull request must contain a special semver tag: `[semver:<segment>]` where `<segment>` is replaced by one of the following values.
 
 | Increment | Description|
 | ----------| -----------|
