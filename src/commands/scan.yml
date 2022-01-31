@@ -1,0 +1,20 @@
+description: Scan project against sonar quality gate
+parameters:
+  sonar_token: 
+    type: string  
+    description: The sonar API token
+  sonar_server_url:
+    type: string 
+    description: The sonarque server URL
+steps:
+  - run: 
+      name: Download Sonar Sccanner
+      command: 
+        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873.zip
+        unzip sonar-scanner-cli-4.2.0.1873.zip
+  - run: 
+      name: Run Sonar Scanner
+      command: > 
+        export SONAR_SCANNER_OPTS="-Xmx2048m"
+        eval ./sonar-scanner-4.2.0.1783/bin/sonar-scanner -Dsonar.host.url=<<parameters.sonar_server_url>> \
+        -Dsonar.login=<<parameters.sonar_token>>
