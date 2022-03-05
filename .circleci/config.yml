@@ -8,7 +8,17 @@ orbs:
   shellcheck: circleci/shellcheck@2.0
 orbs: 
   slack: circleci/slack@4.8.3
-# Pipeline Parameters
+# jobs:
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - slack/notify
+workflows:
+  example-workflow:
+    jobs:
+      - example-job Pipeline Parameters
 ## These parameters are used internally by orb-tools. Skip to the Jobs section.
 parameters:
   run-integration-tests:
