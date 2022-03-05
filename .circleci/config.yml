@@ -6,7 +6,8 @@ orbs:
   orb-tools: circleci/orb-tools@10.0
   bats: circleci/bats@1.0
   shellcheck: circleci/shellcheck@2.0
-
+orbs: 
+  slack: circleci/slack@4.8.3
 # Pipeline Parameters
 ## These parameters are used internally by orb-tools. Skip to the Jobs section.
 parameters:
